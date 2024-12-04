@@ -28,4 +28,15 @@ public class FormsController {
     @PostMapping ("/")
     public void add(@RequestParam("ттттт") String name){
         formsService.add(name);}
+
+    @DeleteMapping("/{id}")
+           public void del(@PathVariable("id") Long id){
+        formsService.del(id);
+    }
+
+@PatchMapping("/{id}")
+public void update(@PathVariable("id") Long id, @RequestParam("ттттт") String name) {
+    formsService.update(id,name);
+}
+
 }

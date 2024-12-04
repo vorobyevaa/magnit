@@ -2,6 +2,7 @@ package ru.aa.sov.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import ru.aa.sov.data.entity.FormEntity;
 import ru.aa.sov.data.repository.FormsRepository;
 import ru.aa.sov.data.repository.TownsRepository;
 import ru.aa.sov.dto.Form;
@@ -10,6 +11,7 @@ import ru.aa.sov.mapper.FormsMapper;
 import ru.aa.sov.mapper.TownMapper;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.StreamSupport;
 
 @Service
@@ -25,10 +27,31 @@ public class FormsService {
                 .toList();
     }
 
-   public void add(String name) {
-        Form form=new Form();
+    public void add(String name) {
+        Form form = new Form();
         form.setName(name);
         formsRepository.save(formMapper.toEntity(form));
 
     }
+
+    public void del(Long id) {
+        formsRepository.deleteById(id);
+
+    }
+
+    public void update(Long id, String name) {
+
+        Optional<FormEntity> formEntity = formsRepository.findById(id);
+        if (formEntity.isPresent()) {
+            formEntity.get().setName(name);
+
+
+
+
+            formsRepository.save(formEntity.get());
+        }
+
+
+    }
+
 }
