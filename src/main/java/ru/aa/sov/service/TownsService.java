@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.aa.sov.data.repository.CountriesRepository;
-import ru.aa.sov.data.repository.RegionsRepository;
+/*import ru.aa.sov.data.repository.RegionsRepository;*/
 import ru.aa.sov.data.repository.TownsRepository;
 import ru.aa.sov.dto.Country;
 import ru.aa.sov.dto.Region;
@@ -22,7 +22,7 @@ import java.util.stream.StreamSupport;
 public class TownsService {
 
     private final TownsRepository townsRepository;
-    private final RegionsRepository regionsRepository;
+/*    private final RegionsRepository regionsRepository; */
     private final CountriesRepository countriesRepository;
     private final TownMapper townMapper;
     private final RegionMapper regionMapper;
@@ -35,7 +35,7 @@ public class TownsService {
     }
 
     public List <Region> regions() {
-        return StreamSupport.stream(regionsRepository.findAll().spliterator(), false)
+       /* return StreamSupport.stream(regionsRepository.findAll().spliterator(), false)
                 .map(item -> {
                     Region region = regionMapper.fromEntity(item);
                     region.setTowns(
@@ -46,7 +46,8 @@ public class TownsService {
                     out(region);
                     return region;
                 })
-                .toList();
+                .toList(); */
+        return null;
     }
 
     public List <Country> countries() {
