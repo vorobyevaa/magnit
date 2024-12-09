@@ -11,14 +11,5 @@ import java.io.Serializable;
 @Table(name = "forms")
 @Getter
 @Setter
-public class FormEntity implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    protected Long id;
-
-    @Column(name = "name")
-    protected String name;
-
+public class FormEntity extends BaseEntity implements Serializable {
 }

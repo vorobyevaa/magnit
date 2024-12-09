@@ -3,10 +3,8 @@ package ru.aa.sov.dto;
 import lombok.Data;
 
 @Data
-public class Town {
+public class Town extends BaseDto {
 
-    Long id;
-    String name;
     protected Boolean isNotSpecified;
     protected Boolean isLead;
     protected Integer regionId;

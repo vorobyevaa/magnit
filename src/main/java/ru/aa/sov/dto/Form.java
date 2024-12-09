@@ -3,9 +3,7 @@ package ru.aa.sov.dto;
 import lombok.Data;
 
 @Data
-public class Form {
+public class Form extends BaseDto {
 
-    Long id;
-    String name;
 }
 

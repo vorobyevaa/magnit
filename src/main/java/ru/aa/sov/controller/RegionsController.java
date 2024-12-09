@@ -6,22 +6,22 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.aa.sov.dto.Town;
+import ru.aa.sov.dto.Region;
 import ru.aa.sov.service.TownsService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/towns")
-@Api(description = "Города")
+@RequestMapping("/regions")
+@Api(description = "Регионы")
 @RequiredArgsConstructor
-public class TownsController {
+public class RegionsController {
 
     private final TownsService townsService;
 
     @GetMapping("/")
-    @ApiOperation("Получить все города")
-    public List<Town> items() {
-        return townsService.items();
+    @ApiOperation("Получить все регионы")
+    public List<Region> items() {
+        return townsService.regions();
     }
 }

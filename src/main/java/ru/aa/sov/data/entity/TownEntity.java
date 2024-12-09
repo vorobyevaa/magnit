@@ -10,15 +10,7 @@ import java.io.Serializable;
 @Table(name = "towns")
 @Getter
 @Setter
-public class TownEntity implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false, nullable = false)
-    protected Long id;
-
-    @Column(name = "name")
-    protected String name;
+public class TownEntity extends BaseEntity implements Serializable {
 
     @Column(name = "is_not_specified")
     protected Boolean isNotSpecified;
@@ -27,6 +19,6 @@ public class TownEntity implements Serializable {
     protected Boolean isLead;
 
     @Column(name = "region_id")
-    protected Integer regionId;
+    protected Long regionId;
 
 }
