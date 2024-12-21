@@ -3,11 +3,8 @@ package ru.aa.sov.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.aa.sov.data.entity.LocalEntity;
-import ru.aa.sov.data.entity.TypeEntity;
 import ru.aa.sov.data.repository.LocalRepository;
-
 import ru.aa.sov.dto.Local;
-
 import ru.aa.sov.mapper.LocalMapper;
 
 import java.util.List;
@@ -44,12 +41,9 @@ public class LocalService {
         Optional<LocalEntity> localEntity = localRepository.findById(id);
         if (localEntity.isPresent()) {
             localEntity.get().setName(name);
-
-
-
-
             localRepository.save(localEntity.get());
         }
 
-    }}
+    }
+}
 

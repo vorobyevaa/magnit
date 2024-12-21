@@ -3,7 +3,6 @@ package ru.aa.sov.controller;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import ru.aa.sov.dto.Form;
 import ru.aa.sov.dto.Type;
 import ru.aa.sov.service.TypesService;
 
@@ -13,7 +12,7 @@ import java.util.List;
 @Api(description = "Типы магнитиков")
 @RequestMapping("/types")
 @RequiredArgsConstructor
-public class TypesControler {
+public class TypesController {
     private final TypesService typesService;
 
     @GetMapping("/")
