@@ -4,7 +4,7 @@
     <table class="list">
         <thead>
         <tr id="header">
-            <th> </th>
+            <th></th>
             <th id="title" class="table-alias"> Название</th>
             <th id="createdAt" class="table-alias"> Форма</th>
             <th id="publishedAt" class="table-alias"> Тип</th>
@@ -14,6 +14,73 @@
         </thead>
         <tbody>
 
+        <tr>
+            <td colspan="2">
+                <select id="regions" th:field="*{regions}" name="regions[]" multiple="multiple"
+                        class="1col active form-control">
+                    <option th:each="region : ${regions}" th:value="${region}" th:text="${region.name}"></option>
+                </select>
+            </td>
+            <td class="col">
+                <select id="forms" th:field="*{forms}" name="forms[]" multiple="multiple"
+                        class="1col active form-control">
+                    <option th:each="form : ${forms}" th:value="${form}" th:text="${form.name}"></option>
+                </select>
+            </td>
+            <td>
+                <select id="types" th:field="*{types}" name="types[]" multiple="multiple"
+                        class="1col active form-control">
+                    <option th:each="type : ${types}" th:value="${type}" th:text="${type.name}"></option>
+                </select>
+            </td>
+            <td>
+                <select id="locals" th:field="*{locals}" name="types[]" multiple="multiple"
+                        class="1col active form-control">
+                    <option th:each="local : ${locals}" th:value="${local}" th:text="${local.name}"></option>
+                </select>
+            </td>
+            <td>Управление</td>
+        </tr>
+        <script>
+            jQuery(document).ready(function () {
+                jQuery('select[multiple]#forms').multiselect({
+                    columns: 1,
+                    search: true,
+                    selectAll: true,
+                    texts: {
+                        placeholder: 'Формы',
+                        search: 'Формы'
+                    }
+                });
+                jQuery('select[multiple]#types').multiselect({
+                    columns: 1,
+                    search: true,
+                    selectAll: true,
+                    texts: {
+                        placeholder: 'Типы',
+                        search: 'Типы'
+                    }
+                });
+                jQuery('select[multiple]#locals').multiselect({
+                    columns: 1,
+                    search: true,
+                    selectAll: true,
+                    texts: {
+                        placeholder: 'Локации',
+                        search: 'Локации'
+                    }
+                });
+                jQuery('select[multiple]#regions').multiselect({
+                    columns: 1,
+                    search: true,
+                    selectAll: true,
+                    texts: {
+                        placeholder: 'Регионы',
+                        search: 'Регионы'
+                    }
+                });
+            })
+        </script>
         <tr th:if="${items.empty}">
             <td colspan="2"> Тут пусто</td>
         </tr>
@@ -37,8 +104,8 @@
 
     <a class="save" type="submit" th:href="@{/news/add}">Добавить</a>
     <script>
-        jQuery(document).ready(function() {
-            jQuery.each(jQuery("table.list td.newsactualfalse"), function(k, v) {
+        jQuery(document).ready(function () {
+            jQuery.each(jQuery("table.list td.newsactualfalse"), function (k, v) {
                 jQuery(v).parents("tr").addClass("disableditem");
             });
         })
