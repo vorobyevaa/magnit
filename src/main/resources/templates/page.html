@@ -110,7 +110,7 @@
                     <li th:if="${items.totalPages > 0}" class="pagination"
                         th:each="pageNumber : ${pageNumbers}"
                         th:class="${pageNumber==items.number + 1} ? current : uncurrent">
-                        <a th:href="@{/__${page}__(size=${items.size}, page=${pageNumber})}"
+                        <a th:href="@{/web/__${page}__(size=${items.size}, page=${pageNumber})}"
                            th:text=${pageNumber}>
                         </a>
                     </li>

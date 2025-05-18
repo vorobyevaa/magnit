@@ -1,6 +1,8 @@
 package ru.aa.sov.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.aa.sov.data.entity.TypeEntity;
 import ru.aa.sov.data.repository.MagnetRepository;
@@ -20,6 +22,10 @@ public class MagnetService {
 
     private final MagnetRepository magnetRepository;
     private final MagnetMapper magnetMapper;
+
+    public Page<Magnet> getAll(Pageable pageable) {
+        return magnetRepository.findAll(pageable).map(magnetMapper::fromEntity);
+    }
 
     public List<Magnet> items() {
         return StreamSupport.stream(magnetRepository.findAll().spliterator(), false)

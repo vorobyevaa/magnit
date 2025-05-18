@@ -1,0 +1,46 @@
+<link th:href="@{/css/page.css}" rel="stylesheet"/>
+
+<div class="icontent">
+    <table class="list">
+        <thead>
+        <tr id="header">
+            <th> </th>
+            <th id="title" class="table-alias"> Название</th>
+            <th id="createdAt" class="table-alias"> Форма</th>
+            <th id="publishedAt" class="table-alias"> Тип</th>
+            <th id="text" class="table-description"> Локация</th>
+            <th class="table-setting">Управление</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:if="${items.empty}">
+            <td colspan="2"> Тут пусто</td>
+        </tr>
+
+        <th:block th:each="item, iter : ${items}">
+            <tr th:classappend="newsstatus__${item.id}__">
+                <td th:classappend="newsactual__${item.id}__"><span th:text="${iter.index+1}"> Id </span></td>
+                <td><span th:text="${item.name}"> Название </span></td>
+                <td><span th:text="${item.form.name}"> Форма </span></td>
+                <td><span th:text="${item.type.name}"> Тип </span></td>
+                <td><span th:text="${item.local.name}"> Локация </span></td>
+                <td class="settingbuttons">
+                    <a class="btn-save" th:href="@{/news/edit/{id}(id=${item.id})}">Изменить</a>
+                    <a class="btn-send" th:href="@{/news/send/{id}(id=${item.id})}">Отправить</a>
+                    <a class="btn-remove" th:href="@{/news/delete/{id}(id=${item.id})}">Удалить</a>
+                </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+
+    <a class="save" type="submit" th:href="@{/news/add}">Добавить</a>
+    <script>
+        jQuery(document).ready(function() {
+            jQuery.each(jQuery("table.list td.newsactualfalse"), function(k, v) {
+                jQuery(v).parents("tr").addClass("disableditem");
+            });
+        })
+    </script>
+</div>
