@@ -1,4 +1,4 @@
-package ru.aa.sov.controller;
+package ru.aa.sov.controller.api;
 
 
 import lombok.RequiredArgsConstructor;
