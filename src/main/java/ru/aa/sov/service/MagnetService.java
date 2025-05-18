@@ -27,11 +27,15 @@ public class MagnetService {
                 .toList();
     }
 
+    public List<Magnet> items(Long locatiionId) {
+        return StreamSupport.stream(magnetRepository.findAllByLocalId(locatiionId).spliterator(), false)
+                .filter(item -> item.getLocal().getId().equals(locatiionId))
+                .map(item -> magnetMapper.fromEntity(item))
+                .toList();
+    }
+
     public void add(Magnet magnet) {
-
-
         magnetRepository.save(magnetMapper.toEntity(magnet));
-
     }
 
     public void del(Long id) {

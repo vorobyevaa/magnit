@@ -1,6 +1,9 @@
 package ru.aa.sov.controller;
 
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import ru.aa.sov.dto.Magnet;
@@ -20,12 +23,15 @@ public class MagnetController {
     @GetMapping("/")
     public List<Magnet> items(){
         return magnetService.items();
+    }
 
-
+    @GetMapping("/test")
+    public List<Magnet> test(){
+        return magnetService.items(1L);
     }
 
     @PostMapping("/")
-    public void add(@RequestBody Magnet magnet){
+    public void add(@RequestBody @Parameter(name = "item", description = "Добавляемый элемент") Magnet magnet){
         magnetService.add(magnet);}
 
     @DeleteMapping("/{id}")

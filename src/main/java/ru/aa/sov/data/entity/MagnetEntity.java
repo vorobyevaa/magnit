@@ -17,17 +17,20 @@ public class MagnetEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="town_id", nullable=false)
-    private TownEntity townEntity;
+    private TownEntity town;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="form_id", nullable=false)
-    private FormEntity formEntity;
+    private FormEntity form;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="type_id", nullable=false)
-    private TypeEntity typeEntity;
+    private TypeEntity type;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="location_id", nullable=false)
-    private LocalEntity localEntity;
+    private LocalEntity local;
+
+    @Column(name = "is_active")
+    private Boolean isActive;
 }

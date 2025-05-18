@@ -18,7 +18,8 @@ public class TownEntity extends BaseEntity implements Serializable {
     @Column(name = "is_lead")
     protected Boolean isLead;
 
-    @Column(name = "region_id")
-    protected Long regionId;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="region_id", nullable=false)
+    protected RegionEntity region;
 
 }

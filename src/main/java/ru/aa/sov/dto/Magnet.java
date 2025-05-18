@@ -1,12 +1,13 @@
 package ru.aa.sov.dto;
 
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-public class Magnet {
-
-    protected Long id;
-    private Town town;
+@Getter
+@Setter
+public class Magnet extends BaseDto {
     private Form form;
     private Type type;
     private Local local;
+    private Boolean isActive;
 }
